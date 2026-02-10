@@ -1,0 +1,8 @@
+<div th:fragment="usuario" class="text-white">
+    <span th:if="${usuario != null}">
+        Bienvenido, <strong th:text="${usuario.nombre}">Usuario</strong>
+    </span>
+    <span th:unless="${usuario != null}">
+        Bienvenido, <strong>Invitado</strong>
+    </span>
+</div>

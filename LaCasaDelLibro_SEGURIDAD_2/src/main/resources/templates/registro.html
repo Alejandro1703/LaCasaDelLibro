@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro - La Casa del Libro</title>
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"></head>
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-header bg-success text-white text-center">
+                        <h4>Nuevo Usuario</h4>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/registro}" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">Nombre de usuario</label>
+                                <input type="text" name="username" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Contraseña</label>
+                                <input type="password" name="password" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">Registrarse</button>
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <a th:href="@{/login}" class="text-decoration-none">¿Ya tienes cuenta? Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
