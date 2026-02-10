@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Libros - Listado</title>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"></head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">Mis Libros</h3>
+                <a th:href="@{/libros/nuevo}" class="btn btn-light btn-sm"> + Añadir Nuevo</a>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover mt-3">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Título</th>
+                            <th>Autor</th>
+                            <th>ISBN</th>
+                            <th>Precio</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="l : ${libros}">
+                            <td th:text="${l.titulo}" class="fw-bold"></td>
+                            <td th:text="${l.autor}"></td>
+                            <td th:text="${l.isbn}"></td>
+                            <td th:text="${l.precio != null ? l.precio + ' €' : '---'}"></td>
+                            <td class="text-center">
+                                <a th:href="@{/libros/editar/{id}(id=${l.id})}" class="btn btn-warning btn-sm">Editar</a>
+                                <a th:href="@{/libros/eliminar/{id}(id=${l.id})}" 
+                                   class="btn btn-danger btn-sm" 
+                                   onclick="return confirm('¿Seguro que quieres eliminar este libro?')">Eliminar</a>
+                            </td>
+                        </tr>
+                        <tr th:if="${#lists.isEmpty(libros)}">
+                            <td colspan="6" class="text-center text-muted">No hay libros registrados todavía.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
